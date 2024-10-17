@@ -16,26 +16,26 @@ const Recipes = () => {
             .then(data => setRecipes(data))
     }, []);
 
-    const handleWantToCook = (recipe) => {
+    const handleWantToCook = (recipe, recipe_name) => {
         const isExist = wantToCook.find(item => item.recipe_id === recipe.recipe_id);
         if (!isExist) {
             const newItem = [...wantToCook, recipe];
             setWantToCook(newItem);
-            toast.success("Added Successfully");
+            toast.success(`${recipe_name} added Successfully`);
         } else {
-            toast.error("Already Exist");
+            toast.error(`${recipe_name} already Exist`);
            
         }
     }
 
-    const handleCurrentlyCooking = (id) => {
+    const handleCurrentlyCooking = (id, recipe_name) => {
         const remainingWantToCook = wantToCook.filter(recipe => recipe.recipe_id !== id);
         setWantToCook(remainingWantToCook);
 
         const preparing = wantToCook.find(recipe => recipe.recipe_id === id);
         const newPreparing = [...currentlyCooking, preparing];
         setCurrentlyCooking(newPreparing);
-        toast.success("Added")
+        toast.success(`Preparing ${recipe_name}`)
         
     }
 

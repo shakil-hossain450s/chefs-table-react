@@ -27,7 +27,7 @@ const WantToCook = ({ wantToCook, handleCurrentlyCooking }) => {
                                 <td>{recipe.calories} calories</td>
                                 <td>
                                     <button
-                                        onClick={() => handleCurrentlyCooking(recipe.recipe_id)}
+                                        onClick={() => handleCurrentlyCooking(recipe.recipe_id, recipe.recipe_name)}
                                         className="btn btn-sm text-[#150B2B] bg-[#0BE58A] hover:bg-[#0BE58A] rounded-full border-0">
                                         Preparing
                                     </button>

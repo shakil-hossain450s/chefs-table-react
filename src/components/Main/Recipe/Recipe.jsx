@@ -32,7 +32,7 @@ const Recipe = ({ recipe, handleWantToCook }) => {
                 </div>
                 <div className="card-actions">
                     <button
-                        onClick={() => handleWantToCook(recipe)}
+                        onClick={() => handleWantToCook(recipe, recipe_name)}
                         className="btn text-[#150B2B] bg-[#0BE58A] hover:bg-[#0BE58A] rounded-full border-0 px-6">
                         Want to Cook
                     </button>
