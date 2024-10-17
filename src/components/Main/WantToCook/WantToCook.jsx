@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 const WantToCook = ({ wantToCook }) => {
     return (
         <div className="text-center">
-            <h1 className="text-xl text-[#282828] mb-1">Want To Cook</h1>
+            <h1 className="text-xl text-[#282828] mb-1">Want To Cook: {wantToCook.length}</h1>
             <div className="border border-[#28282826] w-4/5 mx-auto mb-6"></div>
             <div className="overflow-x-auto">
                 <table className="table">
