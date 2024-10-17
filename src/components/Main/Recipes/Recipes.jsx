@@ -8,6 +8,8 @@ import toast, { Toaster } from 'react-hot-toast';
 const Recipes = () => {
     const [recipes, setRecipes] = useState([]);
     const [wantToCook, setWantToCook] = useState([]);
+    const [currentlyCooking, setCurrentlyCooking] = useState([]);
+
     useEffect(() => {
         fetch("./recipes.json")
             .then(res => res.json())
@@ -25,7 +27,20 @@ const Recipes = () => {
            
         }
     }
-    console.log(wantToCook);
+
+    const handleCurrentlyCooking = (id) => {
+        const remainingWantToCook = wantToCook.filter(recipe => recipe.recipe_id !== id);
+        setWantToCook(remainingWantToCook);
+
+        const preparing = wantToCook.find(recipe => recipe.recipe_id === id);
+        const newPreparing = [...currentlyCooking, preparing];
+        setCurrentlyCooking(newPreparing);
+        toast.success("Added")
+        
+    }
+
+    console.log(currentlyCooking)
+
     return (
         <div>
             <SectionHeading></SectionHeading>
@@ -42,8 +57,11 @@ const Recipes = () => {
                 <div className='col-span-2 border border-[#28282833] p-4 rounded-2xl h-fit'>
                     <WantToCook
                         wantToCook={wantToCook}
+                        handleCurrentlyCooking={handleCurrentlyCooking}
                     ></WantToCook>
-                    <CurrentlyCooking></CurrentlyCooking>
+                    <CurrentlyCooking 
+                        currentlyCooking={currentlyCooking}
+                    ></CurrentlyCooking>
                 </div>
             </div>
             <Toaster></Toaster>

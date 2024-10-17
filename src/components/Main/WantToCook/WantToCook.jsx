@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const WantToCook = ({ wantToCook }) => {
+const WantToCook = ({ wantToCook, handleCurrentlyCooking }) => {
     return (
         <div className="text-center">
             <h1 className="text-xl text-[#282828] mb-1">Want To Cook: {wantToCook.length}</h1>
@@ -20,13 +20,15 @@ const WantToCook = ({ wantToCook }) => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            wantToCook.map((recipe, idx) => <tr key={idx}>
+                            wantToCook.map((recipe, idx) => <tr className='text-[#282828B2] text-sm' key={idx}>
                                 <th>{idx + 1}</th>
                                 <td>{recipe.recipe_name}</td>
                                 <td>{recipe.preparing_time} minutes</td>
                                 <td>{recipe.calories} calories</td>
                                 <td>
-                                    <button className="btn btn-sm text-[#150B2B] bg-[#0BE58A] hover:bg-[#0BE58A] rounded-full border-0">
+                                    <button
+                                        onClick={() => handleCurrentlyCooking(recipe.recipe_id)}
+                                        className="btn btn-sm text-[#150B2B] bg-[#0BE58A] hover:bg-[#0BE58A] rounded-full border-0">
                                         Preparing
                                     </button>
                                 </td>
@@ -41,7 +43,8 @@ const WantToCook = ({ wantToCook }) => {
 };
 
 WantToCook.propTypes = {
-    wantToCook: PropTypes.array.isRequired
+    wantToCook: PropTypes.array.isRequired,
+    handleCurrentlyCooking: PropTypes.func.isRequired
 }
 
 export default WantToCook;
