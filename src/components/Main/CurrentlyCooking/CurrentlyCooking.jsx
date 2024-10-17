@@ -1,6 +1,11 @@
 import PropTypes from 'prop-types';
 
 const CurrentlyCooking = ({ currentlyCooking }) => {
+    let initialValue = 0;
+    const totalTime = currentlyCooking.reduce((totalTime, recipe) => totalTime + recipe.preparing_time, initialValue);
+
+    const totalCalories = currentlyCooking.reduce((totalCalories, recipe) => totalCalories + recipe.calories, initialValue);
+
     return (
         <div className="text-center mt-8">
             <h1 className="text-xl text-[#282828] mb-1">Currently cooking: {currentlyCooking.length}</h1>
@@ -28,6 +33,14 @@ const CurrentlyCooking = ({ currentlyCooking }) => {
                             </tr>)
                         }
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Total Time = <br /> {totalTime} minutes</td>
+                            <td>Total Calories = <br /> {totalCalories} Calories</td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
