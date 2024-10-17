@@ -3,7 +3,7 @@ import BannerImage from '../../assets/banner.jpg'
 const Banner = () => {
     return (
         <div
-            className="hero min-h-screen rounded-3xl mt-5 lg:mt-10"
+            className="hero h-[600px] rounded-3xl mt-5 lg:mt-10"
             style={{
                 background: `linear-gradient(0deg, rgba(21, 11, 43, 0.90) 0%, rgba(21, 11, 43, 0.00) 100%), url(${BannerImage}) lightgray 0px -18.896px / 100% 123.31% `,
                 backgroundSize: 'cover',
